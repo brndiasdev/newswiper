@@ -98,10 +98,8 @@ export default function App() {
 					className={`bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
 						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
-					onClick={(event) => {
-						currentIndex === swiperData.length - 1
-							? (event.window.location.href = null)
-							: setAllowSlideNext(true);
+					onClick={() => {
+						setAllowSlideNext(true);
 					}}
 				>
 					{currentIndex === swiperData.length - 1
