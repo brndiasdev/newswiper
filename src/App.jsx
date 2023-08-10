@@ -22,7 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function App() {
-	const [allowSlideNext, setAllowSlideNext] = useState(true);
+	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	return (
 		<div className='bg-black h-full flex flex-col justify-center items-center'>
 			<Swiper
