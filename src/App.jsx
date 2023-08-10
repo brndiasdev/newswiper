@@ -81,6 +81,7 @@ export default function App() {
 							width='400px'
 							height='300px'
 							className='videoPlayer'
+							controls={true}
 							allowfullscreen
 							onEnded={() => {
 								setAllowSlideNext(true);
@@ -98,6 +99,7 @@ export default function App() {
 							allow='autoplay; fullscreen; picture-in-picture'
 							width='400px'
 							height='300px'
+							controls={true}
 							className='videoPlayer'
 							allowfullscreen
 							onEnded={() => {
@@ -116,6 +118,7 @@ export default function App() {
 							allow='autoplay; fullscreen; picture-in-picture'
 							width='400px'
 							height='300px'
+							controls={true}
 							className='videoPlayer'
 							allowfullscreen
 							onEnded={() => {
@@ -136,6 +139,7 @@ export default function App() {
 							height='300px'
 							className='videoPlayer'
 							allowfullscreen
+							controls={true}
 							onEnded={() => {
 								setAllowSlideNext(true);
 							}}
