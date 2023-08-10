@@ -81,7 +81,6 @@ export default function App() {
 							width='400px'
 							height='300px'
 							className='videoPlayer'
-							controls={true}
 							allowfullscreen
 							onEnded={() => {
 								setAllowSlideNext(true);
@@ -100,7 +99,6 @@ export default function App() {
 							width='400px'
 							height='300px'
 							className='videoPlayer'
-							controls={true}
 							allowfullscreen
 							onEnded={() => {
 								setAllowSlideNext(true);
@@ -119,7 +117,6 @@ export default function App() {
 							width='400px'
 							height='300px'
 							className='videoPlayer'
-							controls={true}
 							allowfullscreen
 							onEnded={() => {
 								setAllowSlideNext(true);
@@ -138,7 +135,6 @@ export default function App() {
 							width='400px'
 							height='300px'
 							className='videoPlayer'
-							controls={true}
 							allowfullscreen
 							onEnded={() => {
 								setAllowSlideNext(true);
@@ -148,17 +144,17 @@ export default function App() {
 				</SwiperSlide>
 			</Swiper>
 			<div className='flex w-full justify-center py-12 gap-8'>
-				<Button className='bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-extrabold btn-prev'>
+				<Button className='bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev'>
 					<FaArrowLeft className='text-2xl' />
 					Episódio Anterior
 				</Button>
-				<Button className='bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-extrabold btn-next'>
+				<Button className='bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next'>
 					Próximo Episódio <FaArrowRight className='text-2xl' />
 				</Button>
 			</div>
 			<Button
 				disabled={() => {}}
-				className='bg-red-600 gap-2 select-none text-slate-800 text-extrabold'
+				className='bg-green-600 w-80 gap-2 select-none text-slate-800 font-bold'
 			>
 				Ir Para Formulário <FaFileSignature className='text-2xl' />
 			</Button>
