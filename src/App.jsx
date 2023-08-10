@@ -64,7 +64,7 @@ export default function App() {
 				{swiperData.map((item, index) => (
 					<SwiperSlide
 						className='videoSlider'
-						data-history='swiper 1'
+						data-history={`swiper${item.id}`}
 						key={index}
 					>
 						<div className='videoContainer'>
@@ -84,7 +84,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex w-full justify-center py-24 gap-8'>
+			<div className='flex w-full justify-center py-12 gap-8'>
 				<Button
 					className={`bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
@@ -96,21 +96,20 @@ export default function App() {
 				</Button>
 				<Button
 					className={`bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
-						currentIndex === swiperData.length - 1 ? "hidden" : ""
+						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
-					onClick={() => setAllowSlideNext(true)}
+					onClick={(event) => {
+						currentIndex === swiperData.length - 1
+							? (event.window.location.href = null)
+							: setAllowSlideNext(true);
+					}}
 				>
-					Próximo Episódio <FaArrowRight className='text-2xl' />
+					{currentIndex === swiperData.length - 1
+						? "Preencha o Formulário"
+						: "Proxímo Epísodio"}
+					<FaArrowRight className='text-2xl' />
 				</Button>
 			</div>
-			{currentIndex === swiperData.length - 1 ? (
-				<Button
-					disabled={() => {}}
-					className='bg-green-600 w-80 gap-2 select-none text-slate-800 font-bold form-btn'
-				>
-					Ir Para Formulário <FaFileSignature className='text-2xl' />
-				</Button>
-			) : null}
 		</div>
 	);
 }
