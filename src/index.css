@@ -79,4 +79,8 @@ root {
 	body {
 		@apply bg-background text-foreground;
 	}
+
+	.btn-prev {
+		@apply bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold;
+	}
 }

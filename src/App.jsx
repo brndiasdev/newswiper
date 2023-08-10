@@ -3,6 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
 import ReactPlayer from "react-player";
 
+import { swiperData } from "./data/swiperData";
+
 import { FaArrowRight, FaArrowLeft, FaFileSignature } from "react-icons/fa";
 
 // Import Swiper styles
@@ -22,7 +24,13 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function App() {
-	const [allowSlideNext, setAllowSlideNext] = useState(false);
+	const [allowSlideNext, setAllowSlideNext] = useState(true);
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	const handleSlideChange = (swiper) => {
+		setCurrentIndex(swiper.realIndex);
+		setAllowSlideNext(true);
+	};
 
 	return (
 		<div className='bg-black h-full flex flex-col justify-center items-center'>
@@ -35,7 +43,7 @@ export default function App() {
 				centeredSlides={true}
 				slidesPerView={"auto"}
 				allowSlideNext={allowSlideNext}
-				allowSlidePrev={false}
+				allowSlidePrev={true}
 				coverflowEffect={{
 					rotate: 0,
 					stretch: 50,
@@ -43,7 +51,8 @@ export default function App() {
 					modifier: 2.5,
 					slideShadows: true,
 				}}
-				onSlideChangeTransitionStart={() => setAllowSlideNext(false)}
+				onSlideChangeTransitionStart={() => setAllowSlideNext(true)}
+				onSlideChange={handleSlideChange}
 				navigation={{
 					nextEl: ".btn-next",
 					prevEl: ".btn-prev",
@@ -52,117 +61,56 @@ export default function App() {
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
 				className='mySwiper select-none'
 			>
-				<SwiperSlide
-					className='videoSlider'
-					data-history='swiper 1'
-				>
-					<div className='videoContainer'>
-						<ReactPlayer
-							url='https://player.vimeo.com/video/436370290?h=5ca24f182f&color=000000&title=0&byline=0&portrait=0'
-							allow='autoplay; fullscreen; picture-in-picture'
-							width='400px'
-							height='300px'
-							className='videoPlayer'
-							controls={true}
-							allowfullscreen
-							onEnded={() => {
-								setAllowSlideNext(true);
-							}}
-						></ReactPlayer>
-					</div>
-				</SwiperSlide>
-				<SwiperSlide
-					className='videoSlider'
-					data-history='swiper 2'
-				>
-					<div className='videoContainer'>
-						<ReactPlayer
-							url='https://player.vimeo.com/video/436370290?h=5ca24f182f&color=000000&title=0&byline=0&portrait=0'
-							allow='autoplay; fullscreen; picture-in-picture'
-							width='400px'
-							height='300px'
-							className='videoPlayer'
-							controls={true}
-							allowfullscreen
-							onEnded={() => {
-								setAllowSlideNext(true);
-							}}
-						></ReactPlayer>
-					</div>
-				</SwiperSlide>
-				<SwiperSlide
-					className='videoSlider'
-					data-history='swiper 3'
-				>
-					<div className='videoContainer'>
-						<ReactPlayer
-							url='https://player.vimeo.com/video/436370290?h=5ca24f182f&color=000000&title=0&byline=0&portrait=0'
-							allow='autoplay; fullscreen; picture-in-picture'
-							width='400px'
-							height='300px'
-							controls={true}
-							className='videoPlayer'
-							allowfullscreen
-							onEnded={() => {
-								setAllowSlideNext(true);
-							}}
-						></ReactPlayer>
-					</div>
-				</SwiperSlide>
-				<SwiperSlide
-					className='videoSlider'
-					data-history='swiper 4'
-				>
-					<div className='videoContainer'>
-						<ReactPlayer
-							url='https://player.vimeo.com/video/436370290?h=5ca24f182f&color=000000&title=0&byline=0&portrait=0'
-							allow='autoplay; fullscreen; picture-in-picture'
-							width='400px'
-							height='300px'
-							controls={true}
-							className='videoPlayer'
-							allowfullscreen
-							onEnded={() => {
-								setAllowSlideNext(true);
-							}}
-						></ReactPlayer>
-					</div>
-				</SwiperSlide>
-				<SwiperSlide
-					className='videoSlider'
-					data-history='swiper 5'
-				>
-					<div className='videoContainer'>
-						<ReactPlayer
-							url='https://player.vimeo.com/video/436370290?h=5ca24f182f&color=000000&title=0&byline=0&portrait=0'
-							allow='autoplay; fullscreen; picture-in-picture'
-							width='400px'
-							height='300px'
-							className='videoPlayer'
-							allowfullscreen
-							controls={true}
-							onEnded={() => {
-								setAllowSlideNext(true);
-							}}
-						></ReactPlayer>
-					</div>
-				</SwiperSlide>
+				{swiperData.map((item, index) => (
+					<SwiperSlide
+						className='videoSlider'
+						data-history='swiper 1'
+						key={index}
+					>
+						<div className='videoContainer'>
+							<ReactPlayer
+								url={item.url}
+								allow='autoplay; fullscreen; picture-in-picture'
+								width='400px'
+								height='300px'
+								className='videoPlayer'
+								controls={true}
+								allowfullscreen
+								onEnded={() => {
+									setAllowSlideNext(true);
+								}}
+							></ReactPlayer>
+						</div>
+					</SwiperSlide>
+				))}
 			</Swiper>
 			<div className='flex w-full justify-center py-24 gap-8'>
-				<Button className='bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev'>
+				<Button
+					className={`bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
+						currentIndex === 0 ? "hidden" : ""
+					}`}
+					onClick={() => setAllowSlideNext(false)}
+				>
 					<FaArrowLeft className='text-2xl' />
 					Episódio Anterior
 				</Button>
-				<Button className='bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next'>
+				<Button
+					className={`bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
+						currentIndex === swiperData.length - 1 ? "hidden" : ""
+					}`}
+					onClick={() => setAllowSlideNext(true)}
+				>
 					Próximo Episódio <FaArrowRight className='text-2xl' />
 				</Button>
 			</div>
-			<Button
-				disabled={() => {}}
-				className='bg-green-600 w-80 gap-2 select-none text-slate-800 font-bold'
-			>
-				Ir Para Formulário <FaFileSignature className='text-2xl' />
-			</Button>
+			{currentIndex === swiperData.length - 1 ? (
+				<Button
+					disabled={() => {}}
+					className='bg-green-600 w-80 gap-2 select-none text-slate-800 font-bold form-btn'
+				>
+					Ir Para Formulário <FaFileSignature className='text-2xl' />
+				</Button>
+			) : null}
 		</div>
 	);
 }
