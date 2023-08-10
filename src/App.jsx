@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 
 import { swiperData } from "./data/swiperData";
 
-import { FaArrowRight, FaArrowLeft, FaFileSignature } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 // Import Swiper styles
 import "swiper/css";
