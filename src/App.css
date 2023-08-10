@@ -1,10 +1,10 @@
 #app {
-	height: 100%;
+	height: 100vh;
 }
 html,
 body {
 	position: relative;
-	height: 100%;
+	height: 100vh;
 	background: black;
 }
 
@@ -19,7 +19,7 @@ body {
 
 .swiper {
 	width: 100%;
-	padding-top: 200px;
+	padding-top: 150px;
 	padding-bottom: 20px;
 }
 
@@ -31,13 +31,13 @@ body {
 }
 
 .swiper-slide img {
-	display: block;
+	display: flex;
 	width: 100%;
 }
 
 .videoContainer {
-	width: 100%;
-	height: 100%;
+	width: 100vh;
+	height: 100vh;
 
 	@media screen and(max-width: 768px) {
 		height: 300px;

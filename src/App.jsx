@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 
 export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
+
 	return (
 		<div className='bg-black h-full flex flex-col justify-center items-center'>
 			<Swiper
@@ -147,7 +148,7 @@ export default function App() {
 					</div>
 				</SwiperSlide>
 			</Swiper>
-			<div className='flex w-full justify-center py-12 gap-8'>
+			<div className='flex w-full justify-center py-24 gap-8'>
 				<Button className='bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev'>
 					<FaArrowLeft className='text-2xl' />
 					Episódio Anterior
