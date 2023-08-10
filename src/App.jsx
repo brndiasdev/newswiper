@@ -24,12 +24,12 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function App() {
-	const [allowSlideNext, setAllowSlideNext] = useState(true);
+	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const handleSlideChange = (swiper) => {
 		setCurrentIndex(swiper.realIndex);
-		setAllowSlideNext(true);
+		setAllowSlideNext(false);
 	};
 
 	return (
@@ -51,7 +51,7 @@ export default function App() {
 					modifier: 2.5,
 					slideShadows: true,
 				}}
-				onSlideChangeTransitionStart={() => setAllowSlideNext(true)}
+				onSlideChangeTransitionStart={() => setAllowSlideNext(false)}
 				onSlideChange={handleSlideChange}
 				navigation={{
 					nextEl: ".btn-next",
@@ -89,7 +89,7 @@ export default function App() {
 					className={`bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
 					}`}
-					onClick={() => setAllowSlideNext(false)}
+					onClick={() => setAllowSlideNext(true)}
 				>
 					<FaArrowLeft className='text-2xl' />
 					Episódio Anterior
@@ -99,7 +99,7 @@ export default function App() {
 						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
 					onClick={() => {
-						setAllowSlideNext(true);
+						setAllowSlideNext(false);
 					}}
 				>
 					{currentIndex === swiperData.length - 1
