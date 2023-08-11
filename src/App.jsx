@@ -92,7 +92,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex w-full justify-center gap-8'>
+			<div className='flex w-full my-4 justify-center gap-8'>
 				<Button
 					className={`bg-[#4dcdc1] select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
