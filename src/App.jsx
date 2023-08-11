@@ -94,7 +94,7 @@ export default function App() {
 			</Swiper>
 			<div className='flex w-full justify-center gap-8'>
 				<Button
-					className={`bg-[#4dcdc1] select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
+					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
 					}`}
 					onClick={() => setAllowSlideNext(true)}
@@ -103,7 +103,7 @@ export default function App() {
 					Episódio Anterior
 				</Button>
 				<Button
-					className={`bg-purple-600 py-8 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
+					className={`bg-purple-600 sm:py-2 md:py-2 py-8 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
 						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
 					onClick={() => {
