@@ -103,7 +103,7 @@ export default function App() {
 					Episódio Anterior
 				</Button>
 				<Button
-					className={`bg-purple-600 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
+					className={`bg-purple-600 sm:my-2 md:my-2 m6-8 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
 						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
 					onClick={() => {
