@@ -73,3 +73,11 @@ body {
 	top: 0;
 	left: 0;
 }
+
+.blurred {
+	filter: blur(5px);
+}
+
+.grab {
+	filter: none !important;
+}

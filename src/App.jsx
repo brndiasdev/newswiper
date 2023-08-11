@@ -50,7 +50,7 @@ export default function App() {
 					stretch: -20,
 					depth: 10,
 					modifier: 2.5,
-					slideShadows: true,
+					slideShadows: false,
 				}}
 				onSlideChangeTransitionStart={() => setAllowSlideNext(false)}
 				onSlideChange={handleSlideChange}
@@ -67,16 +67,20 @@ export default function App() {
 						data-history={`swiper${item.id}`}
 						key={index}
 					>
-						<div className='player-wrapper'>
+						<div
+							className={`videoContainer ${
+								item.id === currentIndex ? "" : "blurred"
+							}`}
+						>
 							<ReactPlayer
 								url={item.url}
 								light={item.thumb}
 								playing={playing}
 								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
-								width='100%'
-								height='100%'
-								className='react-player'
+								width='400px'
+								height='300px'
+								className='videoPlayer'
 								controls={true}
 								playIcon={true}
 								allowFullScreen
