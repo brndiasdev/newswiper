@@ -81,7 +81,7 @@ export default function App() {
 								allow='autoplay; fullscreen; picture-in-picture'
 								width='100%'
 								height='100%'
-								className='react-player sm:w-[150%] md:w-[150%]'
+								className='react-player sm:w-[150%] sm:h-[150%] md:h-[150%] md:w-[150%]'
 								controls={true}
 								allowFullScreen
 								onEnded={() => {
