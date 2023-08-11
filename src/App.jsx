@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [playing, setPlaying] = useState(false);
 
 	const handleSlideChange = (swiper) => {
 		setCurrentIndex(swiper.realIndex);
@@ -66,16 +67,19 @@ export default function App() {
 						data-history={`swiper${item.id}`}
 						key={index}
 					>
-						<div className='videoContainer'>
+						<div className='player-wrapper'>
 							<ReactPlayer
 								url={item.url}
+								light={item.thumb}
+								playing={playing}
+								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
-								width='400px'
-								height='300px'
-								className='videoPlayer'
+								width='100%'
+								height='100%'
+								className='react-player'
 								controls={true}
-								light={true}
-								allowfullscreen
+								playIcon={true}
+								allowFullScreen
 								onEnded={() => {
 									setAllowSlideNext(true);
 								}}
