@@ -69,7 +69,7 @@ export default function App() {
 						key={index}
 					>
 						<div
-							className={`player-wrapper rounded-xl ${
+							className={`player-wrapper thumbnail-wrapper ${
 								item.id === currentIndex ? "" : "blurred"
 							}`}
 						>
