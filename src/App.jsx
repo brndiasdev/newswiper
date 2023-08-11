@@ -57,7 +57,7 @@ export default function App() {
 					nextEl: ".btn-next",
 					prevEl: ".btn-prev",
 				}}
-				pagination={true}
+				
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
 				className='mySwiper select-none'
 			>
