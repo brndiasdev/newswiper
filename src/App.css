@@ -82,3 +82,7 @@ body {
 .grab {
 	filter: none !important;
 }
+
+.thumbnail-border {
+  border: 2px solid #ff0000;
+}
