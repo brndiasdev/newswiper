@@ -68,7 +68,7 @@ export default function App() {
 						key={index}
 					>
 						<div
-							className={`videoContainer ${
+							className={`player-wrapper ${
 								item.id === currentIndex ? "" : "blurred"
 							}`}
 						>
@@ -78,11 +78,10 @@ export default function App() {
 								playing={playing}
 								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
-								width='400px'
-								height='300px'
-								className='videoPlayer'
+								width='100%'
+								height='100%'
+								className='react-player'
 								controls={true}
-								playIcon={true}
 								allowFullScreen
 								onEnded={() => {
 									setAllowSlideNext(true);
@@ -92,7 +91,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex w-full justify-center py-12 gap-8'>
+			<div className='flex w-full justify-center py-4 gap-8'>
 				<Button
 					className={`bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
