@@ -59,7 +59,7 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='mySwiper select-none'
+				className='sm:h-[70vh] h-[55vh] select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
@@ -68,7 +68,7 @@ export default function App() {
 						key={index}
 					>
 						<div
-							className={`player-wrapper ${
+							className={`player-wrapper rounded-xl ${
 								item.id === currentIndex ? "" : "blurred"
 							}`}
 						>
@@ -91,9 +91,9 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex w-full justify-center py-4 gap-8'>
+			<div className='flex w-full justify-center gap-8'>
 				<Button
-					className={`bg-cyan-500 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
+					className={`bg-[#4dcdc1] select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
 					}`}
 					onClick={() => setAllowSlideNext(true)}
@@ -111,7 +111,7 @@ export default function App() {
 				>
 					{currentIndex === swiperData.length - 1
 						? "Preencha o Formulário"
-						: "Proxímo Epísodio"}
+						: "Próximo Episódio"}
 					<FaArrowRight className='text-2xl' />
 				</Button>
 			</div>
