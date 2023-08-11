@@ -81,8 +81,8 @@ export default function App() {
 								allow='autoplay; fullscreen; picture-in-picture'
 								width='100%'
 								height='100%'
-								className='react-player sm:w-[150%] sm:h-[150%] md:h-[150%] md:w-[150%]'
-								controls={true}
+							
+className='react-player sm:w-[100vw] sm:h-[100vh] md:h-[100vh] md:w-[100vw]'								controls={true}
 								allowFullScreen
 								onEnded={() => {
 									setAllowSlideNext(true);
