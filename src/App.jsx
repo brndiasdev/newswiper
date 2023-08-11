@@ -31,6 +31,7 @@ export default function App() {
 	const handleSlideChange = (swiper) => {
 		setCurrentIndex(swiper.realIndex);
 		setAllowSlideNext(false);
+		setPlaying(false);
 	};
 
 	return (
@@ -59,7 +60,7 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-[70vh] h-[55vh] select-none'
+				className='sm:h-[68vh] md:h-70vh mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
