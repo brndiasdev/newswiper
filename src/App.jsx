@@ -46,7 +46,7 @@ export default function App() {
 				allowSlidePrev={true}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 50,
+					stretch: 100,
 					depth: 10,
 					modifier: 2.5,
 					slideShadows: true,
