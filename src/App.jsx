@@ -60,7 +60,7 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-[60vh] md:h-[60vh] h-[55vh] mb-2 select-none'
+				className='sm:h-[55vh] md:h-[55vhh] h-[60vh] mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
