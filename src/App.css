@@ -74,9 +74,9 @@ body {
 }
 
 .blurred {
-	filter: blur(5px);
+ filter: blur(5px);
  pointer-events: none;
-    cursor: not-allowed;
+ cursor: not-allowed;
 }
 
 .grab {
