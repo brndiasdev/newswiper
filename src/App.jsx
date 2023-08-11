@@ -57,7 +57,6 @@ export default function App() {
 					nextEl: ".btn-next",
 					prevEl: ".btn-prev",
 				}}
-				
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
 				className='mySwiper select-none'
 			>
@@ -75,6 +74,7 @@ export default function App() {
 								height='300px'
 								className='videoPlayer'
 								controls={true}
+								light={true}
 								allowfullscreen
 								onEnded={() => {
 									setAllowSlideNext(true);
