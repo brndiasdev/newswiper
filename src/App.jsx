@@ -35,7 +35,7 @@ export default function App() {
 	};
 
 	return (
-		<div className='bg-black h-full flex flex-col justify-center items-center'>
+		<div className='bg-black relative h-full flex flex-col justify-center items-center'>
 			<Swiper
 				effect={"coverflow"}
 				history={{
@@ -80,9 +80,9 @@ export default function App() {
 								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
 								width='100%'
-								height='100%'
-							
-className='react-player sm:w-[100vw] sm:h-[100vh] md:h-[100vh] md:w-[100vw]'								controls={true}
+								height='100%'							
+								className='react-player sm:w-[100vw] sm:h-[100vh] md:h-[100vh] md:w-[100vw]'
+								controls={true}
 								allowFullScreen
 								onEnded={() => {
 									setAllowSlideNext(true);
@@ -92,9 +92,9 @@ className='react-player sm:w-[100vw] sm:h-[100vh] md:h-[100vh] md:w-[100vw]'				
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex w-full justify-center gap-8'>
+			<div className='flex relative w-full justify-center gap-8'>
 				<Button
-					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
+					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm/:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
 					}`}
 					onClick={() => setAllowSlideNext(true)}
