@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 
 // Mobile
 const mobileWidth = "100vw";
-const mobileHeight = "60vh"; // 16:9 ratio
+const mobileHeight = "55vh"; // 16:9 ratio
 
 // Tablet
 const tabletWidth = "640px";
