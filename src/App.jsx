@@ -139,7 +139,7 @@ export default function App() {
 						key={index}
 					>
 						<div
-							className={`player-wrapper rounded-xl thumbnail-wrapper ${
+							className={`player-wrapper container rounded-xl thumbnail-wrapper ${
 								item.id === currentIndex ? "" : "blurred pointer-events-none"
 							}`}
 						>
@@ -152,7 +152,7 @@ export default function App() {
 								allow='autoplay; fullscreen; picture-in-picture'
 								width={playerWidth}
 								height={playerHeight}
-								className='react-player'
+								className='react-player container'
 								controls={true}
 								allowFullScreen
 								onPlay={() => setPlaying(index)}
