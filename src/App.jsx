@@ -108,13 +108,13 @@ export default function App() {
 					key: "swiper",
 				}}
 				grabCursor={true}
-				centeredSlides={true}
-				slidesPerView={"1.3"}
+				centeredSlides={false}
+				slidesPerView={"1.4"}
 				allowSlideNext={allowSlideNext}
 				allowSlidePrev={true}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 40,
+					stretch: 500,
 					depth: 10,
 					modifier: 2.5,
 					slideShadows: false,
