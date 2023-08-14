@@ -101,7 +101,7 @@ export default function App() {
 	};
 
 	return (
-		<div className='bg-black relative h-full flex flex-col justify-center items-center'>
+		<div className='bg-black relative h-full flex flex-col gap-y-8 justify-center items-center'>
 			<Swiper
 				effect={"coverflow"}
 				history={{
