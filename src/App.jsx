@@ -149,7 +149,7 @@ export default function App() {
 								allow='autoplay; fullscreen; picture-in-picture'
 								width={playerWidth}
 								height={playerHeight}
-								className='react-player h-full w-full'
+								className='react-player'
 								controls={true}
 								allowFullScreen
 								onPlay={() => setPlaying(index)}
