@@ -162,7 +162,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex relative w-full pt-24 justify-center gap-8'>
+			<div className='flex relative w-full pt-8 justify-center gap-8'>
 				<Button
 					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm/:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
