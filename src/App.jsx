@@ -23,10 +23,57 @@ import {
 } from "swiper/modules";
 import { Button } from "@/components/ui/button";
 
+// Mobile
+const mobileWidth = "100%";
+const mobileHeight = "100%"; // 16:9 ratio
+
+// Tablet
+const tabletWidth = "640px";
+const tabletHeight = "360px";
+
+// Desktop
+const desktopWidth = "750px";
+const desktopHeight = "350px";
+
 export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [playing, setPlaying] = useState(false);
+
+	// Usage
+	const isMobile = useIsMobile();
+	const isTablet = useIsTablet();
+	const isDesktop = useIsDesktop();
+
+	const playerWidth = isMobile
+		? mobileWidth
+		: isTablet
+		? tabletWidth
+		: desktopWidth;
+	const playerHeight = isMobile
+		? mobileHeight
+		: isTablet
+		? tabletHeight
+		: desktopHeight;
+
+	// Hook
+	function useIsMobile() {
+		const [width] = useState(window.innerWidth);
+
+		return width <= 768;
+	}
+
+	function useIsTablet() {
+		const [width] = useState(window.innerWidth);
+
+		return width >= 769 && width <= 1024;
+	}
+
+	function useIsDesktop() {
+		const [width] = useState(window.innerWidth);
+
+		return width > 1024;
+	}
 
 	const handleSlideChange = (swiper) => {
 		setCurrentIndex(swiper.realIndex);
@@ -43,34 +90,37 @@ export default function App() {
 				}}
 				grabCursor={true}
 				centeredSlides={true}
-				slidesPerView={"auto"}
+				slidesPerView={"1.3"}
 				allowSlideNext={allowSlideNext}
 				allowSlidePrev={true}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: -20,
+					stretch: 100,
 					depth: 10,
 					modifier: 2.5,
 					slideShadows: false,
 				}}
-				onSlideChangeTransitionStart={() => setAllowSlideNext(false)}
+				onSlideChangeTransitionStart={() => {
+					setAllowSlideNext(false);
+					setPlaying(false);
+				}}
 				onSlideChange={handleSlideChange}
 				navigation={{
 					nextEl: ".btn-next",
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-[55vh] md:h-[55vhh] h-[75vh] mb-2 select-none'
+				className='sm:h-full rounded-xl md:h-full h-[55vh] mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
-						className='videoSlider'
+						className='videoSlider rounded-xl'
 						data-history={`swiper${item.id}`}
 						key={index}
 					>
 						<div
-							className={`player-wrapper thumbnail-wrapper ${
-								item.id === currentIndex ? "" : "blurred"
+							className={`player-wrapper rounded-xl thumbnail-wrapper ${
+								item.id === currentIndex ? "" : "blurred pointer-events-none"
 							}`}
 						>
 							<ReactPlayer
@@ -79,9 +129,9 @@ export default function App() {
 								playing={playing}
 								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
-								width='100%'
-								height='100%'							
-								className='react-player sm:w-[100vw] sm:h-[100vh] md:h-[100vh] md:w-[100vw]'
+								width={playerWidth}
+								height={playerHeight}
+								className='react-player'
 								controls={true}
 								allowFullScreen
 								onEnded={() => {
@@ -92,7 +142,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex relative w-full justify-center gap-8'>
+			<div className='flex relative w-full pt-8 justify-center gap-8'>
 				<Button
 					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm/:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
