@@ -131,10 +131,7 @@ export default function App() {
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
-						className=''
-						style={{
-							transform: "none",
-						}}
+						className='videoSlider rounded-xl'
 						data-history={`swiper${item.id}`}
 						key={index}
 					>
