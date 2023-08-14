@@ -109,7 +109,7 @@ export default function App() {
 				}}
 				grabCursor={true}
 				centeredSlides={false}
-				slidesPerView={"1.4"}
+				slidesPerView={"1.8"}
 				allowSlideNext={allowSlideNext}
 				allowSlidePrev={true}
 				coverflowEffect={{
