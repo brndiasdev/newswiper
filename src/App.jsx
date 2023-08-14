@@ -40,18 +40,18 @@ export default function App() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [playing, setPlaying] = useState(null);
 	const [watchedIndex, setWatchedIndex] = useState([0]);
+	const [initialSlideChanged, setInitialSlideChanged] = useState(false);
 
 	useEffect(() => {
-		if (watchedIndex.includes(currentIndex)) {
+		if (initialSlideChanged && watchedIndex.includes(currentIndex)) {
 			setAllowSlideNext(true);
 		} else {
 			setAllowSlideNext(false);
 		}
-	}, [currentIndex, watchedIndex]);
+	}, [currentIndex, watchedIndex, initialSlideChanged]);
 
 	const isMobile = useIsMobile();
 	const isTablet = useIsTablet();
-	const isDesktop = useIsDesktop();
 
 	const playerWidth = isMobile
 		? mobileWidth
@@ -76,12 +76,6 @@ export default function App() {
 		return width >= 769 && width <= 1024;
 	}
 
-	function useIsDesktop() {
-		const [width] = useState(window.innerWidth);
-
-		return width > 1024;
-	}
-
 	const handleSlideChange = (swiper) => {
 		setPlaying(null);
 		setCurrentIndex(swiper.realIndex);
@@ -90,6 +84,9 @@ export default function App() {
 	const handlePrevClick = () => {
 		setPlaying(null);
 		setAllowSlideNext(true);
+		if (!initialSlideChanged) {
+			setInitialSlideChanged(true);
+		}
 	};
 
 	const handleNextClick = () => {
