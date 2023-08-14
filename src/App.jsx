@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 
 import { swiperData } from "./data/swiperData";
@@ -39,8 +39,16 @@ export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [playing, setPlaying] = useState(null);
+	const [watchedIndex, setWatchedIndex] = useState([0]);
 
-	// Usage
+	useEffect(() => {
+		if (watchedIndex.includes(currentIndex)) {
+			setAllowSlideNext(true);
+		} else {
+			setAllowSlideNext(false);
+		}
+	}, [currentIndex, watchedIndex]);
+
 	const isMobile = useIsMobile();
 	const isTablet = useIsTablet();
 	const isDesktop = useIsDesktop();
@@ -56,7 +64,6 @@ export default function App() {
 		? tabletHeight
 		: desktopHeight;
 
-	// Hook
 	function useIsMobile() {
 		const [width] = useState(window.innerWidth);
 
@@ -78,7 +85,6 @@ export default function App() {
 	const handleSlideChange = (swiper) => {
 		setPlaying(null);
 		setCurrentIndex(swiper.realIndex);
-		setAllowSlideNext(false);
 	};
 
 	const handlePrevClick = () => {
@@ -88,7 +94,13 @@ export default function App() {
 
 	const handleNextClick = () => {
 		setPlaying(null);
-		setAllowSlideNext(false);
+	};
+
+	const handleVideoEnded = () => {
+		if (!watchedIndex.includes(currentIndex)) {
+			setWatchedIndex([...watchedIndex, currentIndex]);
+		}
+		setAllowSlideNext(true);
 	};
 
 	return (
@@ -136,7 +148,7 @@ export default function App() {
 								url={item.url}
 								light={item.thumb}
 								playing={playing === index}
-								onClick={() => setPlaying(true)}
+								onClick={() => setPlaying(index)}
 								allow='autoplay; fullscreen; picture-in-picture'
 								width={playerWidth}
 								height={playerHeight}
@@ -144,9 +156,7 @@ export default function App() {
 								controls={true}
 								allowFullScreen
 								onPlay={() => setPlaying(index)}
-								onEnded={() => {
-									setAllowSlideNext(true);
-								}}
+								onEnded={handleVideoEnded}
 							></ReactPlayer>
 						</div>
 					</SwiperSlide>
