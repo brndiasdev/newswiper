@@ -127,11 +127,11 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-full justify-center items-center md:h-full h-full mb-2 select-none'
+				className='sm:h-full justify-center items-center flex transform-none md:h-full h-full mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
-						className='videoSlider transform-none rounded-xl'
+						className='videoSlider transform-none flex rounded-xl'
 						data-history={`swiper${item.id}`}
 						key={index}
 					>
