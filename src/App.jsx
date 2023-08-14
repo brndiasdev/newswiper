@@ -139,7 +139,7 @@ export default function App() {
 						key={index}
 					>
 						<div
-							className={`player-wrapper container rounded-xl thumbnail-wrapper ${
+							className={`player-wrapper rounded-xl thumbnail-wrapper ${
 								item.id === currentIndex ? "" : "blurred pointer-events-none"
 							}`}
 						>
