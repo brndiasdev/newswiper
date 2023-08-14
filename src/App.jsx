@@ -95,7 +95,7 @@ export default function App() {
 				allowSlidePrev={true}
 				coverflowEffect={{
 					rotate: 0,
-					stretch: 100,
+					stretch: 40,
 					depth: 10,
 					modifier: 2.5,
 					slideShadows: false,
@@ -110,7 +110,7 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-full rounded-xl md:h-full h-[55vh] mb-2 select-none'
+				className='sm:h-full justify-center items-center md:h-full h-[55vh] mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
