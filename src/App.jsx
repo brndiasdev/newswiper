@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 
 // Mobile
 const mobileWidth = "80vw";
-const mobileHeight = "65vh"; // 16:9 ratio
+const mobileHeight = "50vh"; // 16:9 ratio
 
 // Tablet
 const tabletWidth = "640px";
@@ -152,7 +152,7 @@ export default function App() {
 								allow='autoplay; fullscreen; picture-in-picture'
 								width={playerWidth}
 								height={playerHeight}
-								className='react-player'
+								className='react-player h-full w-full'
 								controls={true}
 								allowFullScreen
 								onPlay={() => setPlaying(index)}
