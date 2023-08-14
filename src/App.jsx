@@ -91,6 +91,9 @@ export default function App() {
 
 	const handleNextClick = () => {
 		setPlaying(null);
+		if (!watchedIndex.includes(currentIndex)) {
+			setWatchedIndex([...watchedIndex, currentIndex]);
+		}
 	};
 
 	const handleVideoEnded = () => {
@@ -109,7 +112,7 @@ export default function App() {
 				}}
 				grabCursor={true}
 				centeredSlides={false}
-				slidesPerView={"1.8"}
+				slidesPerView={"1"}
 				allowSlideNext={allowSlideNext}
 				allowSlidePrev={true}
 				coverflowEffect={{
