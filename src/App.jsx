@@ -32,8 +32,8 @@ const tabletWidth = "640px";
 const tabletHeight = "360px";
 
 // Desktop
-const desktopWidth = "750px";
-const desktopHeight = "350px";
+const desktopWidth = "1080px"; // 750px
+const desktopHeight = "740px"; // 350px
 
 export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
