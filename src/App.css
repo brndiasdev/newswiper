@@ -92,6 +92,8 @@ body {
 
 .react-player__preview {
 	border-radius: 50px;
+	width: 80vw;
+	height: 60vh;
 	@media screen and (max-width: 720px) {
 		width: 80vw;
 		height: 60vh;
