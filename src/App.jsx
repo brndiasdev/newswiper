@@ -24,7 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 // Mobile
-const mobileWidth = "90vw";
+const mobileWidth = "100%";
 const mobileHeight = "50vh"; // 16:9 ratio
 
 // Tablet
@@ -38,7 +38,7 @@ const desktopHeight = "350px";
 export default function App() {
 	const [allowSlideNext, setAllowSlideNext] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [playing, setPlaying] = useState(false);
+	const [playing, setPlaying] = useState(null);
 
 	// Usage
 	const isMobile = useIsMobile();
@@ -76,9 +76,19 @@ export default function App() {
 	}
 
 	const handleSlideChange = (swiper) => {
+		setPlaying(null);
 		setCurrentIndex(swiper.realIndex);
 		setAllowSlideNext(false);
-		setPlaying(false);
+	};
+
+	const handlePrevClick = () => {
+		setPlaying(null);
+		setAllowSlideNext(true);
+	};
+
+	const handleNextClick = () => {
+		setPlaying(null);
+		setAllowSlideNext(false);
 	};
 
 	return (
@@ -100,11 +110,9 @@ export default function App() {
 					modifier: 2.5,
 					slideShadows: false,
 				}}
-				onSlideChangeTransitionStart={() => {
-					setAllowSlideNext(false);
-					setPlaying(false);
-				}}
 				onSlideChange={handleSlideChange}
+				autoplay={true}
+				watchSlidesProgress={true}
 				navigation={{
 					nextEl: ".btn-next",
 					prevEl: ".btn-prev",
@@ -124,9 +132,10 @@ export default function App() {
 							}`}
 						>
 							<ReactPlayer
+								key={item.id}
 								url={item.url}
 								light={item.thumb}
-								playing={playing}
+								playing={playing === index}
 								onClick={() => setPlaying(true)}
 								allow='autoplay; fullscreen; picture-in-picture'
 								width={playerWidth}
@@ -134,6 +143,7 @@ export default function App() {
 								className='react-player'
 								controls={true}
 								allowFullScreen
+								onPlay={() => setPlaying(index)}
 								onEnded={() => {
 									setAllowSlideNext(true);
 								}}
@@ -147,7 +157,7 @@ export default function App() {
 					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm/:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
 					}`}
-					onClick={() => setAllowSlideNext(true)}
+					onClick={handlePrevClick}
 				>
 					<FaArrowLeft className='text-2xl' />
 					Episódio Anterior
@@ -156,9 +166,7 @@ export default function App() {
 					className={`bg-purple-600 sm:py-2 md:py-2 py-8 select-none sm:w-[250px] gap-2 w-[175px] text-white font-bold btn-next ${
 						currentIndex === swiperData.length - 1 ? "bg-green-600" : ""
 					}`}
-					onClick={() => {
-						setAllowSlideNext(false);
-					}}
+					onClick={handleNextClick}
 				>
 					{currentIndex === swiperData.length - 1
 						? "Preencha o Formulário"
