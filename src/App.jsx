@@ -101,7 +101,7 @@ export default function App() {
 	};
 
 	return (
-		<div className='bg-black relative h-full flex flex-col gap-y-8 justify-center items-center'>
+		<div className='bg-black relative h-full flex flex-col justify-center items-center'>
 			<Swiper
 				effect={"coverflow"}
 				history={{
@@ -127,7 +127,7 @@ export default function App() {
 					prevEl: ".btn-prev",
 				}}
 				modules={[EffectCoverflow, Pagination, Navigation, History]}
-				className='sm:h-full justify-center items-center md:h-full h-[55vh] mb-2 select-none'
+				className='sm:h-full justify-center items-center md:h-full h-full mb-2 select-none'
 			>
 				{swiperData.map((item, index) => (
 					<SwiperSlide
