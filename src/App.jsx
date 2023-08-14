@@ -24,8 +24,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 // Mobile
-const mobileWidth = "100%";
-const mobileHeight = "50vh"; // 16:9 ratio
+const mobileWidth = "80vw";
+const mobileHeight = "65vh"; // 16:9 ratio
 
 // Tablet
 const tabletWidth = "640px";
@@ -162,7 +162,7 @@ export default function App() {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className='flex relative w-full pt-16 justify-center gap-8'>
+			<div className='flex relative w-full pt-24 justify-center gap-8'>
 				<Button
 					className={`bg-[#4dcdc1] sm:py-2 md:py-2 py-8 select-none gap-2 sm/:w-[250px] w-[175px] font-sans text-black font-bold btn-prev ${
 						currentIndex === 0 ? "hidden" : ""
